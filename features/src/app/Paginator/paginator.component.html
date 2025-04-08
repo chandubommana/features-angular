@@ -1,0 +1,25 @@
+<mat-paginator [length]="100"
+              [pageSize]="10"
+              [pageSizeOptions]="[5, 10, 25, 100]">
+</mat-paginator>
+
+
+<!-- custom paginatopr -->
+<div class="paginator-container">
+    <ul>
+      <li *ngFor="let item of pagedData">{{ item }}</li>
+    </ul>
+  
+    <div class="pagination-controls">
+      <button (click)="prevPage()" [disabled]="currentPage === 1">Prev</button>
+  
+      <button *ngFor="let page of [].constructor(totalPages); let i = index"
+              (click)="changePage(i + 1)"
+              [class.active]="currentPage === i + 1">
+        {{ i + 1 }}
+      </button>
+  
+      <button (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
+    </div>
+  </div>
+  
